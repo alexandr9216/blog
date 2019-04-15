@@ -28,5 +28,18 @@ Route::group(
     ],
     function () {
         Route::get('/', 'DashboardController@dashboard')->name('admin.index');
+
+        Route::resource('/category', 'CategoryController',
+            /* Роуты
+            admin.category.index
+            admin.category.create
+            admin.category.destroy
+            admin.category.update
+            admin.category.show
+            admin.category.edit
+            */
+            ['as' => 'admin']//это будет префикс к стандартным именам роутов ресурсов (к примеру вместо category.index = будет admin.category.index)
+        );
+
     }
 );
