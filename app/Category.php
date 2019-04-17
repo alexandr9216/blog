@@ -28,4 +28,16 @@ class Category extends Model
         return $this->hasMany(self::class, 'parent_id');
     }
 
+
+    //Обратная связь категорий с новостями "Многие ко многоим" (Полиморфная)
+    public function articles() {
+        return $this->morphedByMany('App\Article', 'categoryable');
+    }
+
+
+    //Заготовка: возвращаем определенное (в $count) кол-во последних категорий
+    public function scopeLastCategories($query, $count) {
+        return $query->orderBy('created_at', 'desc')->take($count)->get();
+    }
+
 }

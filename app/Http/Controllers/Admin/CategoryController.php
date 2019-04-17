@@ -18,7 +18,7 @@ class CategoryController extends Controller
         //
         return view(
             'admin.categories.index',
-                [ 'categories' => Category::paginate(10) ]//10 записей на страницу
+                [ 'categories' => Category::paginate() ]//10 записей на страницу
         );
 
     }
@@ -122,6 +122,9 @@ class CategoryController extends Controller
         //
         $category->delete();
 
+        //Когда удаляешь родительскую категорию, у которой внутри есть еще дочерние,
+        //у этих оставшихся дочерних категорий остаются несуществуюшие [parent_id] (которые теперь ссылаются на удаленного родителя).
+        //Теперь им нужен опекун)). В данном случае при удаление им необходимо обновить "parent_id" на 0.
         $category->where('parent_id', $category->id)->update(['parent_id' => 0]);
 
         return redirect()->route('admin.category.index');

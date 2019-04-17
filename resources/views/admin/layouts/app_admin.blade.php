@@ -10,7 +10,8 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    <script src="{{asset('/vendor/unisharp/laravel-ckeditor/ckeditor.js?v=1.1.3')}}"></script>
+    <script src="{{ asset('js/app.js?v=1.1.3') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -37,12 +38,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                        <li><a href="{{route('admin.index')}}">Панель состояния</a></li>
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Блог</a>
 
                             <ul class="dropdown-menu" role="menu">
                                 <li class="dropdown"><a href="{{route('admin.category.index')}}">Категории</a></li>
-                                <li class="dropdown"><a href="#">Материалы</a></li>
+                                <li class="dropdown"><a href="{{route('admin.article.index')}}">Материалы</a></li>
                             </ul>
                         </li>
                     </ul>

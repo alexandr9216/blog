@@ -7,6 +7,14 @@
 
 require('./bootstrap');
 
+$(document).ready(function () {
+
+    if ($('textarea#description_short').length != 0 && $('textarea#description').length != 0) {
+        CKEDITOR.replace('description_short');
+        CKEDITOR.replace('description');
+    }
+});
+
 window.Vue = require('vue');
 
 /**
