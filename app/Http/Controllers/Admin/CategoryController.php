@@ -18,7 +18,7 @@ class CategoryController extends Controller
         //
         return view(
             'admin.categories.index',
-                [ 'categories' => Category::paginate() ]//10 записей на страницу
+                [ 'categories' => Category::paginate(10) ]//10 записей на страницу
         );
 
     }

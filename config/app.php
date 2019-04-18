@@ -177,6 +177,8 @@ return [
 
         Unisharp\Ckeditor\ServiceProvider::class,//Ckeditor
 
+        App\Providers\BlogServiceProvider::class,
+
     ],
 
     /*
